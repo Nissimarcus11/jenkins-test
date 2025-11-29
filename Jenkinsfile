@@ -6,7 +6,7 @@ pipeline {
         stage('Pull Docker image'){
             steps {
                 sh '''
-                    docker pull nginx:tricie-perl
+                    docker pull nginx:mainline-alpine3.22
                 '''
             }
         }
@@ -30,7 +30,7 @@ pipeline {
                     --ignore-unfixed \
                     --template "@/tmp/trivy-templates/html.tpl" \
                     --output trivy-report.html \
-                    nginx:tricie-perl
+                    nginx:mainline-alpine3.22
                 '''
             }
         }
