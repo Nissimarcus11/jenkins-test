@@ -14,8 +14,7 @@ pipeline {
             steps {
                 sh '''
                 mkdir -p $HOME/bin
-                echo 'export PATH=$HOME/bin:$PATH' >> ~/.bashrc
-                source ~/.bashrc
+                export PATH=$HOME/bin:$PATH
                 curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b $HOME/bin v0.67.2
                 # Create template directory
                 mkdir -p /tmp/trivy-templates
