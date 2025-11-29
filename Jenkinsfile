@@ -33,18 +33,20 @@ pipeline {
                     nginx:mainline-alpine3.22
                 '''
             }
-        }
-        stage('Publish Trivy HTML Report') {
-            steps {
-                publishHTML target: [
-                    reportDir: '.',
-                    reportFiles: 'trivy-report.html',
-                    reportName: 'Trivy Scan Report',
-                    allowMissing: false,
-                    keepAll: true,
-                    alwaysLinkToLastBuild: true
-                ]
+            post {
+                always {
+                        publishHTML target: [
+                            reportDir: '.',
+                            reportFiles: 'trivy-report.html',
+                            reportName: 'Trivy Scan Report',
+                            allowMissing: false,
+                            keepAll: true,
+                            alwaysLinkToLastBuild: true
+                        ]
+                }
             }
         }
+
     }
+    
 }
