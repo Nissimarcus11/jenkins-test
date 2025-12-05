@@ -19,11 +19,12 @@ pipeline {
                     chmod +x ${WORKSPACE}/aws_inspector.sh
                     ${WORKSPACE}/aws_inspector.sh
                 '''
+                load "envvars.groovy"
                 
                 sh '''
                     echo 'Verifying Amazon Inspector SBOM Generator installation'
-                    echo '$INSPECTOR_INSTALL_DIR contents:'
-                    $INSPECTOR_INSTALL_DIR/inspector-sbomgen --version
+                    echo '${INSPECTOR_INSTALL_DIR} contents:'
+                    ${INSPECTOR_INSTALL_DIR}/inspector-sbomgen --version
                 '''
                 
             }
