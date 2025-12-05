@@ -33,7 +33,8 @@ echo "Found BIN directory: $BIN_PATH"▐
 echo "==============================="
 
 mkdir -p "$INSTALL_DIR"
-
+echo cleaning existing files in $INSTALL_DIR
+rm -rf "$INSTALL_DIR"/*
 echo "Installing to $INSTALL_DIR"
 mv -f "$BIN_PATH"/* "$INSTALL_DIR/"
 
