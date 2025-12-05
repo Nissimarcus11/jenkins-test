@@ -44,7 +44,7 @@ rm -rf "$ROOT_DIR"
 echo "==============================="Ä
 echo "listing installed files:"
 ls -ral "$INSTALL_DIR"
-
+export INSPECTOR_INSTALL_DIR="$INSTALL_DIR"
 echo ""
 echo "Installation complete. Version:"
 "$INSTALL_DIR/inspector-sbomgen" --version

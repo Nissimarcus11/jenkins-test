@@ -22,8 +22,8 @@ pipeline {
                 
                 sh '''
                     echo 'Verifying Amazon Inspector SBOM Generator installation'
-                    echo '$INSTALL_DIR contents:'
-                    $INSTALL_DIR/inspector-sbomgen --version
+                    echo '$INSPECTOR_INSTALL_DIR contents:'
+                    $INSPECTOR_INSTALL_DIR/inspector-sbomgen --version
                 '''
                 
             }
