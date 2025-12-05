@@ -19,6 +19,11 @@ pipeline {
                     chmod +x ${WORKSPACE}/aws_inspector.sh
                     ${WORKSPACE}/aws_inspector.sh
                 '''
+                step('Verify installed sbomgen'){
+                    sh '''
+                        /opt/amazon_inspector/inspector-sbomgen --version
+                    '''
+                }
             }
             post {
                 always {

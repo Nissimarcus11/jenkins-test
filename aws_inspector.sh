@@ -5,7 +5,7 @@ set -euo pipefail
 
 ARCH="amd64"  # x86_64 = amd64
 SBOM_URL="https://amazon-inspector-sbomgen.s3.amazonaws.com/latest/linux/${ARCH}/inspector-sbomgen.zip"
-INSTALL_DIR="bin/inspector_sbomgen"
+INSTALL_DIR="/opt/amazon_inspector"
 
 echo "Downloading Amazon Inspector SBOM Generator (linux/${ARCH})..."
 curl -fsSL "$SBOM_URL" -o inspector-sbomgen.zip
