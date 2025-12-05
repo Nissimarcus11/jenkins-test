@@ -12,6 +12,7 @@ pipeline {
         }
         stage('Amazon Inspector Scan') {
             steps {
+                sh "echo 'Listing current directory:'; ls -lar"
                 sh "aws_inspector.sh"
             }
             post {
