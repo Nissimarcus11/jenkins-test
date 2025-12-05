@@ -35,7 +35,7 @@ echo "==============================="
 mkdir -p "$INSTALL_DIR"
 
 echo "Installing to $INSTALL_DIR"
-mv -n "$BIN_PATH"/* "$INSTALL_DIR/"
+mv -f "$BIN_PATH"/* "$INSTALL_DIR/"
 
 chmod -R +x "$INSTALL_DIR"
 
