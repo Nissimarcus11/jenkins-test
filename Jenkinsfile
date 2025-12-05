@@ -22,7 +22,8 @@ pipeline {
                 
                 sh '''
                     echo 'Verifying Amazon Inspector SBOM Generator installation'
-                    /opt/amazon_inspector/inspector-sbomgen --version
+                    echo '$INSTALL_DIR contents:'
+                    $INSTALL_DIR/inspector-sbomgen --version
                 '''
                 
             }
