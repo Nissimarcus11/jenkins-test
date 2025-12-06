@@ -31,7 +31,7 @@ pipeline {
                     awsCredentialId: 'JenkinsAWS',
                     // Docker creds for pulling image
                     // credentialId: 'JenkinsAWS',
-                    sbomgenPath: '$HOME/bin/amazon_inspector',
+                    sbomgenPath: '$HOME/bin/amazon_inspector/inspector-sbomgen',
                     sbomgenSelection: 'Manual',
                     isAutoFailCveEnabled : 'true',
                     reportArtifactName: 'aws-inspector-report-arm64'
