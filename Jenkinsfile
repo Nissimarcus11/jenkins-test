@@ -40,7 +40,17 @@ pipeline {
             }
             post {
                 always {
-                    sh "echo 'Amazon Inspector Scan Completed. Check the generated SBOM files.'"
+                    script{
+                        // Publish AWS Inspector report if it exists
+                        if (fileExists('${BUILD_NUMBER}/index.html')) {
+                            publishHTML target: [
+                                reportDir: '.',
+                                reportFiles: '${BUILD_NUMBER}/index.html',
+                                reportName: 'AWS Inspector Report',
+                                keepAll: true,
+                                alwaysLinkToLastBuild: true
+                            ]
+                    }
                 }
             }
         }   
