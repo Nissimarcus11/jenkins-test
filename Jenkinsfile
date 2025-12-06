@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        JenkinsAWS     = credentials('JenkinsAWS')
+    }
     stages {
 
         stage('Pull Docker image'){
@@ -19,13 +21,21 @@ pipeline {
                     chmod +x ${WORKSPACE}/aws_inspector.sh
                     ${WORKSPACE}/aws_inspector.sh
                 '''
-                load "envvars.groovy"
                 
-                sh '''
-                    echo 'Verifying Amazon Inspector SBOM Generator installation'
-                    echo '${INSPECTOR_INSTALL_DIR} contents:'
-                    ${INSPECTOR_INSTALL_DIR}/inspector-sbomgen --version
-                '''
+                step([
+                    $class: 'com.amazon.inspector.jenkins.amazoninspectorbuildstep.AmazonInspectorBuilder',
+                    archivePath: "nginx:mainline-alpine3.22",
+                    awsRegion: 'ap-south-2',
+                    isEpssThresholdEnabled: 'true',
+                    // AWS creds for inspector API
+                    awsCredentialId: 'JenkinsAWS',
+                    // Docker creds for pulling image
+                    // credentialId: 'JenkinsAWS',
+                    sbomgenPath: '$HOME/bin/amazon_inspector',
+                    sbomgenSelection: 'Manual',
+                    isAutoFailCveEnabled : 'true',
+                    reportArtifactName: 'aws-inspector-report-arm64'
+                ])
                 
             }
             post {
