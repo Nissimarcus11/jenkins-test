@@ -41,15 +41,13 @@ pipeline {
             post {
                 always {
                     script{
-                        // Publish AWS Inspector report if it exists
-                        if (fileExists('${BUILD_NUMBER}/index.html')) {
-                            publishHTML target: [
-                                reportDir: '.',
-                                reportFiles: '${BUILD_NUMBER}/index.html',
-                                reportName: 'AWS Inspector Report',
-                                keepAll: true,
-                                alwaysLinkToLastBuild: true
-                            ]
+                        publishHTML target: [
+                            reportDir: '.',
+                            reportFiles: '$BUILD_NUMBER/index.html.html',
+                            reportName: 'Inspector Vulnerability Report',
+                            keepAll: true,
+                            alwaysLinkToLastBuild: true
+                        ]
                     }
                 }
             }
