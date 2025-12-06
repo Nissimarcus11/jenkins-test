@@ -43,7 +43,7 @@ pipeline {
                     script{
                         publishHTML target: [
                             reportDir: '.',
-                            reportFiles: '$BUILD_NUMBER/index.html.html',
+                            reportFiles: '$BUILD_NUMBER/index.html',
                             reportName: 'Inspector Vulnerability Report',
                             keepAll: true,
                             alwaysLinkToLastBuild: true
