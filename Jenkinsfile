@@ -5,19 +5,38 @@ pipeline {
     }
     stages {
 
-        stage('Pull Docker image'){
+        stage('set Docker image'){
             steps {
-                sh '''
-                    docker pull nginx:mainline-alpine3.22
-                '''
-                sh '''
-                    export DOCKER_IMAGE="nginx:mainline-alpine3.22"
-                ''' 
-                sh '''
-                    echo "Docker image pulled: ${DOCKER_IMAGE}"
-                '''
+                script {
+                    sh '''
+                        echo "Setting Docker image variable"
+                        DOCKER_IMAGE="nginx:mainline-alpine3.22"
+                    '''
+                }
             }
         }
+        stage ('Print Docker image'){
+            steps {
+                script {
+                    sh '''
+                        echo "Docker image is: ${DOCKER_IMAGE}"
+                    '''
+                }
+            }
+        }
+        // stage('Pull Docker image'){
+        //     steps {
+        //         sh '''
+        //             docker pull nginx:mainline-alpine3.22
+        //         '''
+        //         sh '''
+        //             export DOCKER_IMAGE="nginx:mainline-alpine3.22"
+        //         ''' 
+        //         sh '''
+        //             echo "Docker image pulled: ${DOCKER_IMAGE}"
+        //         '''
+        //     }
+        // }
         
         // stage('Amazon Inspector Scan') {
         //     steps {
