@@ -10,7 +10,7 @@ pipeline {
                 script {
                     sh '''
                         echo "Setting Docker image variable"
-                        DOCKER_IMAGE="nginx:mainline-alpine3.22"
+                        env.DOCKER_IMAGE="nginx:mainline-alpine3.22"
                     '''
                 }
             }
