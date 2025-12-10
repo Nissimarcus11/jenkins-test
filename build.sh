@@ -1,2 +1,2 @@
-global IMAGE_NAME_EXPORT="custom-image-name"
-global tag_export="custom-tag"
+IMAGE_NAME_EXPORT="custom-image-name"
+tag_export="custom-tag"
