@@ -10,8 +10,7 @@ pipeline {
                 script {
                     sh '''
                         chmod +x build.sh
-                        ./build.sh
-                        echo "Docker image built: \${IMAGE_NAME_EXPORT}:\${tag_export}"
+                        ./build.sh && echo "Docker image built: \${IMAGE_NAME_EXPORT}:\${tag_export}"
                     '''
                         // def DockerImage = sh(script: 'echo \$DOCKER_IMAGE', returnStdout: true).trim()
                         // env.DOCKER_IMAGE=DockerImage
