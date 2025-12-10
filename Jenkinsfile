@@ -12,7 +12,7 @@ pipeline {
                         echo "Setting Docker image variable"
                         DOCKER_IMAGE="nginx:mainline-alpine3.22"
                     '''
-                        def DockerImage = sh(script: 'echo ${DOCKER_IMAGE}', returnStdout: true).trim()
+                        def DockerImage = sh(script: 'echo \$DOCKER_IMAGE', returnStdout: true).trim()
                         env.DOCKER_IMAGE=DockerImage
                 }
             }
