@@ -17,14 +17,15 @@ pipeline {
                 sh '''
                     echo "Listing current directory"
                     ls -lar
-
+                    DOCKER_IMAGE="nginx:mainline-alpine3.22"
+                    export DOCKER_IMAGE
                     chmod +x ${WORKSPACE}/aws_inspector.sh
                     ${WORKSPACE}/aws_inspector.sh
                 '''
                 
                 step([
                     $class: 'com.amazon.inspector.jenkins.amazoninspectorbuildstep.AmazonInspectorBuilder',
-                    archivePath: "nginx:mainline-alpine3.22",
+                    archivePath: "${env.DOCKER_IMAGE}",
                     awsRegion: 'ap-south-2',
                     isEpssThresholdEnabled: 'true',
                     // AWS creds for inspector API
