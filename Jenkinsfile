@@ -9,6 +9,7 @@ pipeline {
             steps {
                 script {
                     sh '''
+                        chmod +x build.sh
                         ./build.sh
                         echo "Docker image built: \$IMAGE_NAME_EXPORT:\$tag_export"
                     '''
