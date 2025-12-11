@@ -49,7 +49,7 @@ pipeline {
                 step([
                     $class: 'com.amazon.inspector.jenkins.amazoninspectorbuildstep.AmazonInspectorBuilder',
                     archivePath: "image.tar",
-                    archiveType : 'tarball',
+                    archiveType : 'archive',
                     awsRegion: 'ap-south-2',
                     isEpssThresholdEnabled: 'true',
                     // AWS creds for inspector API
